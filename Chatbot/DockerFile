@@ -1,5 +1,5 @@
 # Utiliza una imagen base de Alpine Linux
-FROM alpine:latest
+FROM alpine:3.13-rc-alpine3.17
 
 # Instala Python y otras dependencias
 RUN apk update && \
