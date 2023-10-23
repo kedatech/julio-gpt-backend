@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    build: ./Chatbot
+    ports:
+      - "${APP_PORT}:5000"
+    env_file:
+      - .env
+  # Agrega otros servicios si es necesario
