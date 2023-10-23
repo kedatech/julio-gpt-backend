@@ -1,27 +1,19 @@
-# Utiliza una imagen base de Alpine Linux
-FROM alpine:latest
-
-# Instala Python y otras dependencias
-RUN apk update && \
-    apk add --no-cache python3 && \
-    apk add --no-cache py3-pip
+# Utiliza una imagen base de Python 3.12
+FROM python:3.12
 
 # Establece el directorio de trabajo en el contenedor
-WORKDIR /app
+WORKDIR /code
 
-# Copia los archivos de la aplicación a la imagen
-COPY . /app
+# Copia el archivo de dependencias requirements.txt
+COPY . /code
 
-# Actualiza pip y luego instala las dependencias de la aplicación
-RUN pip install --upgrade pip
-RUN pip install flask
-RUN pip install flask[async]
-RUN pip install flask_cors
-RUN pip install openai
-RUN pip install chromadb
+# Instala las dependencias especificadas en requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
+# Copia tu aplicación al directorio /code/app en la imagen
+COPY ./app /code/app
 # Expone el puerto en el que se ejecutará la aplicación Flask
-EXPOSE 5000
+EXPOSE 80
 
-# Inicia la aplicación Flask cuando se inicia el contenedor
-CMD ["python", "app.py"]
+# Define el comando para ejecutar la aplicación
+CMD ["uvicorn", "app.main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "80"]
