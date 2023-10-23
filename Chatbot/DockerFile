@@ -1,5 +1,5 @@
 # Utiliza una imagen base de Python 3.12.0
-FROM python:3.12.0-alpine
+FROM python
 # Establece el directorio de trabajo en el contenedor
 WORKDIR /app
 
