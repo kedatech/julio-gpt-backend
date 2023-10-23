@@ -1,6 +1,6 @@
 import openai
 import json
-from env import BACKEND_SERVER, OPENAI_API_KEY  # Asegúrate de que esta variable contenga la URL correcta
+from secreet import BACKEND_SERVER, OPENAI_API_KEY  # Asegúrate de que esta variable contenga la URL correcta
 import re
 import urllib.parse
 
