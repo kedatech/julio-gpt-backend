@@ -13,7 +13,7 @@ RUN pip install flask
 RUN pip install flask[async]
 RUN pip install flask_cors
 RUN pip install openai
-RUN pip installchromadb
+RUN pip install chromadb
 
 # Expone el puerto en el que se ejecutará la aplicación Flask
 EXPOSE 5000
