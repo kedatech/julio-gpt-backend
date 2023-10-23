@@ -25,8 +25,8 @@ async def query():
 
 
 if __name__ == '__main__':
-    app.run()
-    
+    app.run(host='0.0.0.0', port=5000)
+
 def getDocumets():
     carpeta_archivos = 'data/'
     archivos = []
