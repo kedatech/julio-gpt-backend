@@ -1,19 +1,32 @@
 # Utiliza una imagen base de Python 3.12
+FROM python:3.12 as requirements-stage
+
+# Establece el directorio de trabajo en el contenedor
+WORKDIR /tmp
+
+# Instala Poetry
+RUN pip install poetry
+
+# Copia los archivos de configuración de Poetry a la carpeta temporal
+COPY ./pyproject.toml ./poetry.lock* /tmp/
+
+# Exporta las dependencias a un archivo requirements.txt sin hashes
+RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
+
+# Cambia a una imagen base de Python 3.12 para la etapa de construcción
 FROM python:3.12
 
 # Establece el directorio de trabajo en el contenedor
 WORKDIR /code
 
-# Copia el archivo de dependencias requirements.txt
-COPY . /code
+# Copia el archivo de dependencias requirements.txt de la etapa anterior
+COPY --from=requirements-stage /tmp/requirements.txt /code/requirements.txt
 
 # Instala las dependencias especificadas en requirements.txt
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # Copia tu aplicación al directorio /code/app en la imagen
 COPY ./app /code/app
-# Expone el puerto en el que se ejecutará la aplicación Flask
-EXPOSE 80
 
 # Define el comando para ejecutar la aplicación
 CMD ["uvicorn", "app.main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "80"]

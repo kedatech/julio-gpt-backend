@@ -1,5 +1,5 @@
-# flask
-# flask[async]
-# flask_cors
-# openai
+flask
+flask[async]
+flask_cors
+openai
 chromadb
