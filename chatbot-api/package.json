@@ -1,0 +1,22 @@
+{
+  "name": "chatbot-api",
+  "version": "0.0.1",
+  "description": "julio gpt node rest api typescript for chatbot",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "ts-node-dev src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "author": "elisodesign",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "4.17.21",
+    "ts-node-dev": "2.0.0",
+    "typescript": "5.2.2"
+  },
+  "dependencies": {
+    "dotenv": "16.3.1",
+    "express": "4.18.2"
+  }
+}
