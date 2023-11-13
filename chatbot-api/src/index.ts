@@ -1,9 +1,12 @@
 import express from 'express'
 import { envConfig } from './shared/config'
+import { router } from './routes'
 
 const PORT = envConfig.PORT;
 const app = express()
 app.use(express.json())
+
+app.use(router)
 
 app.get("/ping", (_, res )=> {
     console.log("1 request")
