@@ -8,7 +8,7 @@ const removeExtension = (fileName: string) => fileName.split(".").shift()
 readdirSync(path).forEach((file: string) => {
   const name = removeExtension(file)
   if (name != "index") {
-    import(`./${name}.routes.ts`).then((module)=> {
+    import(`./${name}.routes`).then((module)=> {
         console.log("Se esta cargando la ruta " + name)
         router.use(`/${name}`, module.router)
     })
