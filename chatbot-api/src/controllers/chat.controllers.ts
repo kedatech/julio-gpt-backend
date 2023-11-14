@@ -54,8 +54,13 @@ export const chatHandler = async (req: Request,res: Response): Promise<void> => 
 			chat_history: pastMessages,
 		})
 
+		let explicitMessage = false
+		if(response.text = "No se permiten mensajes ofensivos u explicitos"){
+			explicitMessage = true;
+		}
+
 		console.log("response", response)
-		res.status(200).json(response)
+		res.status(200).json({...response, explicitMessage})
 	} catch (error: any) {
 		console.log("error", error)
 		res.status(500).json({ error: error.message || "Algo salió mal" })
