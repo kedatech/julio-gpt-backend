@@ -1,12 +1,12 @@
 import express from 'express'
 import { envConfig } from './shared/config/env'
-import { router } from './routes'
+import { router as chatRouter} from './routes/chat.routes'
 
 const PORT = envConfig.PORT;
 const app = express()
 app.use(express.json())
 
-app.use("/api", router)
+app.use("/api/chat", chatRouter)
 
 app.get("/ping", (_, res )=> {
     console.log("1 request")
