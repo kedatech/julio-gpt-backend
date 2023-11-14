@@ -55,7 +55,7 @@ export const chatHandler = async (req: Request,res: Response): Promise<void> => 
 		})
 
 		let explicitMessage = false
-		if(response.text = "No se permiten mensajes ofensivos u explicitos"){
+		if(response.text == "No se permiten mensajes ofensivos u explicitos"){
 			explicitMessage = true;
 		}
 
