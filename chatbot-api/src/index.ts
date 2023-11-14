@@ -1,5 +1,5 @@
 import express from 'express'
-import { envConfig } from './shared/config'
+import { envConfig } from './shared/config/env'
 import { router } from './routes'
 
 const PORT = envConfig.PORT;
