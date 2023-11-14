@@ -5,7 +5,6 @@ const path = __dirname
 
 const removeExtension = (fileName: string) => fileName.split(".").shift()
 
-
 readdirSync(path).forEach((file: string) => {
   const name = removeExtension(file)
   if (name != "index") {

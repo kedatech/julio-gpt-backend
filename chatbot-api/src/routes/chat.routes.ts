@@ -1,9 +1,8 @@
 import { Router } from "express"
+import { chatHandler } from '../controllers/chat.controllers'
 
 const router = Router()
 
-router.get("/", (_, res)=> {
-    res.send("chat endpoint")
-})  
+router.post("/", chatHandler)  
 
 export { router }

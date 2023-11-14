@@ -6,7 +6,7 @@ const PORT = envConfig.PORT;
 const app = express()
 app.use(express.json())
 
-app.use(router)
+app.use("/api", router)
 
 app.get("/ping", (_, res )=> {
     console.log("1 request")
