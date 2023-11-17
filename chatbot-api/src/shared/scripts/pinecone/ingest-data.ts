@@ -11,7 +11,7 @@ import { createIndex } from './indexes-scripts'
    Make sure to add your PDF files inside the 'docs' folder
 */
 const { PINECONE_INDEX_NAME } = envConfig
-const filePath = 'markdown';
+const filePath = 'public/markdown';
 
 export const run = async () => {
   try {
