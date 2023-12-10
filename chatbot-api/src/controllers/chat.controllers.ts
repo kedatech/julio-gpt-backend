@@ -36,9 +36,12 @@ export const chatHandler = async (req: Request,res: Response): Promise<void> => 
 				// namespace: PINECONE_NAME_SPACE, //namespace viene de tu carpeta de configuración
 			}
 		)
+		console.log("vectorStore")
 
 		// Crear cadena
 		const chain = makeChain(vectorStore)
+
+		console.log("chain")
 
 		const pastMessages = history.map((message: string, i: number) => {
 			if (i % 2 === 0) {
@@ -53,6 +56,8 @@ export const chatHandler = async (req: Request,res: Response): Promise<void> => 
 			question: sanitizedQuestion,
 			chat_history: pastMessages,
 		})
+
+		console.log("response")
 
 		let explicitMessage = false
 		if(response.text == "No se permiten mensajes ofensivos u explicitos"){
